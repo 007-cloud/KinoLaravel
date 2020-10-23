@@ -10,7 +10,7 @@ class Tag extends Model
 {
     use HasFactory;
 
-    public function tags()
+    public function articles()
     {
         return $this->belongsToMany(Articles::class);
     }

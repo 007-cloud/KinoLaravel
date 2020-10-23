@@ -5,7 +5,7 @@
     <a href="/articles/create" class="btn btn-warning btn-lg pull">Добавить статью</a>
     <hr>
 
-    @foreach ($articles as $article)
+    @forelse ($articles as $article)
         <div class="row">
             <div class="well clearfix">
                 <div class="text-center">
@@ -17,11 +17,12 @@
                 </div>
             </div>
         </div>
-    @endforeach
-
-    <div class="text-center pg">
-        {{ $articles->links() }}
-    </div>
-    
-
+    @empty 
+        <div class="row">
+                <div class="text-center">
+                    <h3>SORRY!!!</h3>
+                    <p>There is no articles with this tag :(</p>
+                </div>
+        </div>
+    @endforelse
 @endsection

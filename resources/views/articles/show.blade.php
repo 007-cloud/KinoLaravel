@@ -12,4 +12,12 @@
     </div>
 </div>
 
+<div id="tags">
+    @foreach ($article->tags as $tag)
+        <a href="{{ route('articles.index', ['tag' => $tag->name]) }}" class="btn btn-sm">
+            #{{ $tag->name }}
+        </a>
+    @endforeach
+</div>
+
 @endsection
