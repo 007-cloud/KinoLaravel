@@ -25,6 +25,14 @@
           <p class="help alert-danger">{{ $errors->first('body') }}</p>
         @enderror
       </div>
+      <div class="form-group">
+        <select class="form-control" name="tags[]" multiple>
+            @foreach ($tags as $tag)
+                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+            @endforeach
+        </select>
+
+    </div>
     <button type="submit" class="btn btn-warning btn-lg">Добавить</button>
   </form>
 @endsection

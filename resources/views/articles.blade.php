@@ -1,10 +1,14 @@
 @extends('layout')
 
-@section('content')   
+@section('content')
     <h2>Статьи</h2>
-    <a href="/articles/create" class="btn btn-warning btn-lg pull">Добавить статью</a>
-    <hr>
-
+    @guest
+        @if (Route::has('register'))
+        @endif
+        @else
+            <a href="/articles/create" class="btn btn-warning btn-lg pull">Добавить статью</a>
+        <hr>
+    @endguest
     @forelse ($articles as $article)
         <div class="row">
             <div class="well clearfix">
@@ -17,7 +21,7 @@
                 </div>
             </div>
         </div>
-    @empty 
+    @empty
         <div class="row">
                 <div class="text-center">
                     <h3>SORRY!!!</h3>

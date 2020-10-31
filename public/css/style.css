@@ -170,3 +170,7 @@ footer a:hover {
   background-color: #eea236;
   border-color: #eea236;
 }
+.header a:hover {
+    color: #f0ad4e;
+    text-decoration: underline;
+}

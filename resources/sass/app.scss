@@ -1,5 +1,8 @@
-$dark-color: #222;
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-body {
-    color: $dark-color;
-}
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

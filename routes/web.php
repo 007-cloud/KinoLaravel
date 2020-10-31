@@ -21,7 +21,9 @@ Route::get('/', function () {
         'articles' => $articles
     ]);
 });
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('films', function () {
     return view('films');
 });
@@ -44,5 +46,7 @@ Route::put('articles/{article}', [ArticlesController::class, 'update'])->name('a
 Route::get('contacts', function () {
     return view('contacts');
 });
+
+
 
 
