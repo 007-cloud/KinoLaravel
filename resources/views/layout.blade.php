@@ -72,7 +72,7 @@
             <li class="{{ Request::is('series') ? "active" : ""}}"><a href="/series">Сериалы</a></li>
             <li class="{{ Request::is('ratings') ? "active" : ""}}"><a href="/ratings">Рейтинг фильмов</a></li>
             <li class="{{ Request::is('articles') ? "active" : ""}}"><a href="/articles">Статьи</a></li>
-            <li class="{{ Request::is('contacts') ? "active" : ""}}"><a href="/contacts">Контакты</a></li>
+            <li class="{{ Request::is('contacts') ? "active" : ""}}"><a href="{{ route('contacts.create') }}">Контакты</a></li>
 
             </ul>
         </div>

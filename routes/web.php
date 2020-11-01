@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +21,8 @@ Route::get('/', function () {
     return view('welcome', [
         'articles' => $articles
     ]);
-});
+})->name('welcome');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -43,10 +45,8 @@ Route::get('articles/{article}', [ArticlesController::class, 'show'])->name('art
 Route::get('articles/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
 Route::put('articles/{article}', [ArticlesController::class, 'update'])->name('articles.update');
 
-Route::get('contacts', function () {
-    return view('contacts');
-});
-
+Route::get('contacts', [ContactController::class, 'create'])->name('contacts.create');
+Route::post('contacts', [ContactController::class, 'store'])->name('contacts.store');
 
 
 
