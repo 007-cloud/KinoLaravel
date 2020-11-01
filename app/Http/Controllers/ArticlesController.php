@@ -35,7 +35,7 @@ class ArticlesController extends Controller
     public function show(Articles $article) {
         return view('articles.show', [
             'article' => $article,
-            'user' => User::where('id', $article->user_id)
+            'user' => User::where('id', $article->user_id)->first()
         ]);
     }
 

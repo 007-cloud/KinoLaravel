@@ -15,6 +15,13 @@
                 <div class="text-center">
                     <h3>{{ $article->title }}</h3>
                     <p>{{ $article->excerpt }}</p>
+                    @foreach ($article->tags as $tag)
+                        <a href="{{ route('articles.index', ['tag' => $tag->name]) }}" class="btn btn-sm">
+                            #{{ $tag->name }}
+                        </a>
+
+
+                @endforeach
                 </div>
                 <div class="col-lg-12">
                     <a href="/articles/{{ $article->id }}" class="btn btn-lg btn-warning pull-right">Подробнее</a>
