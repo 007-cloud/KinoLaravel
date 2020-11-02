@@ -26,9 +26,10 @@ class ArticlesController extends Controller
         } else {
             $articles = Articles::latest()->get();
         }
-
+        $users = User::all();
         return view('articles', [
-            'articles' => $articles
+            'articles' => $articles,
+            'users' => $users
         ]);
     }
 

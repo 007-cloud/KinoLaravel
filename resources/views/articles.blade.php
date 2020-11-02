@@ -12,6 +12,11 @@
     @forelse ($articles as $article)
         <div class="row">
             <div class="well clearfix">
+            @foreach ($users as $user)
+                @if ($article->user_id === $user->id)
+                    <p style="color: silver">Author: {{ $user->name }}</p>
+                @endif
+            @endforeach
                 <div class="text-center">
                     <h3>{{ $article->title }}</h3>
                     <p>{{ $article->excerpt }}</p>

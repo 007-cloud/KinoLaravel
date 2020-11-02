@@ -24,7 +24,7 @@ class ContactController extends Controller
         //     $message->from(request('email'), request('name'));
         //     $message->to('Admin@gmail.com');
         // });
-        Mail::to(request('email'))->send(new Contact());
+        Mail::to(request('email'))->send(new Contact(request('email'), request('name')));
         // $data = ['jks'];
         // Mail::send('mail.contact-me', $data, function ($message) {
         //     $message->from(request('email'), request('name'));
