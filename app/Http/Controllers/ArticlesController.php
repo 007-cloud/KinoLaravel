@@ -14,34 +14,20 @@ use Illuminate\Support\Facades\Auth;
 class ArticlesController extends Controller
 {
     public function index() {
-        if(request('tag')) {
-            $tag = Tag::where('name', request('tag'))->firstOr(function () {
-                $tag = request('tag');
-            });
-            if($tag) {
-                $articles = $tag->articles;
-            } else {
-                $articles = [];
-            }
-        } else {
-            $articles = Articles::latest()->get();
-        }
-        $users = User::all();
-        return view('articles', [
-            'articles' => $articles,
-            'users' => $users
+
+        return view('articles.index', [
+            'articles' => Articles::latest()->paginate(3)
         ]);
     }
 
     public function show(Articles $article) {
         return view('articles.show', [
             'article' => $article,
-            'user' => User::where('id', $article->user_id)->first()
         ]);
     }
 
     public function create() {
-
+        $this->authorize('create', Articles::class);
         return view('articles.create', [
             'tags' => Tag::all()
         ]);
@@ -50,6 +36,7 @@ class ArticlesController extends Controller
 
     public function store() {
 
+        $this->authorize('create', Articles::class);
         // Articles::create($this->validateArticle());
 
         $article = new Articles($this->validateArticle());
@@ -69,10 +56,18 @@ class ArticlesController extends Controller
     }
 
     public function update(Articles $article) {
+        $this->authorize('update', $article);
+
         $article->update($this->validateArticle());
         $article->tags()->detach(Tag::all());
         $article->tags()->attach(request('tags'));
         return redirect(route('articles.show', $article));
+    }
+
+    public function destroy(Articles $article){
+        $article->delete();
+
+        return redirect(route('articles.index'));
     }
 
     protected function validateArticle() {

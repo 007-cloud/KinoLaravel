@@ -27,7 +27,7 @@ class ArticlesFactory extends Factory
             'user_id' => User::factory(),
             'title' => $this->faker->title,
             'excerpt' => $this->faker->paragraph,
-            'body' => $this->faker->paragraphs(3)
+            'body' => $this->faker->paragraph
         ];
     }
 }

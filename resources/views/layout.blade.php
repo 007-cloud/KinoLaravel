@@ -73,8 +73,22 @@
             <li class="{{ Request::is('ratings') ? "active" : ""}}"><a href="/ratings">Рейтинг фильмов</a></li>
             <li class="{{ Request::is('articles') ? "active" : ""}}"><a href="/articles">Статьи</a></li>
             <li class="{{ Request::is('contacts') ? "active" : ""}}"><a href="{{ route('contacts.create') }}">Контакты</a></li>
+            @guest
+                @if (Route::has('register'))
+
+                @endif
+                @else
+                    <li class="{{ Request::is('payment') ? "active" : ""}}"><a href="{{ route('payments.create') }}">Оплата</a></li>
+                    <li class="{{ Request::is('notification') ? "active" : ""}}"><a href="{{ route('notifications.show') }}">Сообщение</a></li>
+            @endguest
 
             </ul>
+            @can('view_list_of_users')
+                <ul class="nav nav-pills">
+                    <li class="{{ Request::is('users') ? "active" : ""}}"><a href="{{ route('users') }}">Users</a></li>
+                </ul>
+            @endcan
+
         </div>
 
         </div>

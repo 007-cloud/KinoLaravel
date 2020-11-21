@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+
 <form method="POST", action="{{ route('articles.store') }}">
     @csrf
 
@@ -35,5 +36,6 @@
     </div>
     <button type="submit" class="btn btn-warning btn-lg">Добавить</button>
   </form>
+
 @endsection
 
